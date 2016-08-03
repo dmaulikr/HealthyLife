@@ -22,12 +22,8 @@ class SignInViewController: UIViewController {
         if let email = emailTextField.text, let password = passwordTextField.text {
             FIRAuth.auth()?.signInWithEmail(email, password: password, completion: { (user, error) in
                 if error != nil {
-                    print(error?.localizedDescription)
-                    
-                    self.alertMessage("Error", message: "\(error?.localizedDescription)")
-                    
-                    
-                    
+                    print(error?.debugDescription)
+                    Helper.showAlert("Error", message: error?.localizedDescription, inViewController: self)
                 } else {
                     print(user)
                     print("User logged in")
@@ -36,20 +32,12 @@ class SignInViewController: UIViewController {
                 }
             })
         } else {
-            alertMessage("Oops", message: "Please fill in all the fields")
+            Helper.showAlert("Oops", message: "Please fill in all the fields", inViewController: self)
         }
         
     }
     
     @IBAction func SignUpButton(sender: UIButton) {
-        
-    }
-    
-    func alertMessage (title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        let OK = UIAlertAction(title: "ok", style: .Default, handler: nil)
-        alert.addAction(OK)
-        presentViewController(alert, animated: true, completion: nil)
         
     }
     
