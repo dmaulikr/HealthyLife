@@ -11,6 +11,26 @@ The following **required** functionality is completed:
 - [ ] User can sign in using OAuth login flow.
 - [ ] User can pull to refresh.
 
+Demo Library: 
+
+- [ ] Demo Exercise library (play Youtube videos)
+- [ ] User can customize their plan using demo exercise. 
+- [ ] User can send exercise plan they created to other users
+
+Personal journal: 
+
+- [ ] Post picture and description of food  (food journal)
+- [ ] Record activities done  (activities journal)
+- [ ] Record result pictures and stat (result journal)
+- [ ] Creating your own plan using demo library or getting plan from your personal trainers (activities planned)
+- [ ] Get notification when user start the work out plan you send them. 
+- [ ] Get notification when user finish 
+
+Newfeed:
+
+- [ ] tableview list of other users profile. 
+
+
 The following **optional** features are implemented:
 
 - [ ] Optional feature
