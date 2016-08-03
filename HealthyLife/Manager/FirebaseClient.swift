@@ -10,10 +10,23 @@ import Firebase
 
 class FirebaseClient {
     
-    var ref =  FIRDatabase.database().reference()
-    let currentUser = FIRAuth.auth()?.currentUser
-    let storageRef = FIRStorage.storage().reference()
-
+    static let sharedInstance = FirebaseClient()
+    
+    static let reference =  FIRDatabase.database().reference()
+    static let storageRef = FIRStorage.storage().reference()
+    
+    static let currentUser = FIRAuth.auth()?.currentUser
+    static var currentUserID : String! {
+        get {
+            if let uid = FirebaseClient.currentUser?.uid {
+                return uid
+            }
+            return ""
+        }
+    }
+    
+    static var userRef = reference.child("users").child(currentUserID)
+    
     static func setup() {
         
         FIRApp.configure()

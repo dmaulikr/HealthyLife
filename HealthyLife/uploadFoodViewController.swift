@@ -56,47 +56,18 @@ class uploadFoodViewController: UIViewController, UIImagePickerControllerDelegat
     
     @IBAction func uploadAction(sender: UIButton) {
         
-        //: Upload JSON to realtime database
-        
-        key =  ref.child("users").child(currentUserID!).child("food_journal").childByAutoId().key
-
-        let newPost: Dictionary<String, AnyObject> = [
-            "ImageUrl": key,
-            "Description": foodDesTextField.text!,
-            "Love": 0,
-             "time": FIRServerValue.timestamp()
+        guard let foodImage = FoodImageView.image else {
             
-        ]
-
-        ref.child("users").child(currentUserID!).child("food_journal").child(key).setValue(newPost)
-        
-        
-        
-        //: Upload Image 
-        
-        if let foodImage = FoodImageView.image?.resizeImage(CGSize(width: 500.0, height: 500.0)) {
-            let imageData: NSData = UIImagePNGRepresentation(foodImage)!
-            
-            // Create a reference to the file you want to upload
-            
-            let riversRef = storageRef.child("images/\(key)")
-            
-            // Upload the file to the path ""images/\(key)"
-            riversRef.putData(imageData, metadata: nil) { metadata, error in
-                if (error != nil) {
-                    // Uh-oh, an error occurred!
-                    
-                } else {
-                    // Metadata contains file metadata such as size, content-type, and download URL.
-                    let downloadURL = metadata!.downloadURL
-                    print(downloadURL)
-                    print("does it work")
-                    
-                }
-            }
+            Helper.showAlert("Error", message: "Please choose an image to upload", inViewController: self)
+            return
         }
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        FoodManager.uploadFood(foodDesTextField.text, image: foodImage, withCompletion: {
+            
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }) { (error) in
+            Helper.showAlert("Error", message: error.localizedDescription, inViewController: self)
+        }
     }
     
      //******************************************************************************************************
