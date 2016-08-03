@@ -74,64 +74,32 @@ class uploadFoodViewController: UIViewController, UIImagePickerControllerDelegat
         
         //: Upload Image 
         
-        var foodImage = FoodImageView.image
-        foodImage = ResizeImage(foodImage!, targetSize: CGSize(width: 500.0, height: 500.0))
-        
-        let imageData: NSData = UIImagePNGRepresentation(foodImage!)!
-
-        
-        
-        
-        // Create a reference to the file you want to upload
-        
-        let riversRef = storageRef.child("images/\(key)")
-        
-        // Upload the file to the path ""images/\(key)"
-        let uploadTask = riversRef.putData(imageData, metadata: nil) { metadata, error in
-            if (error != nil) {
-                // Uh-oh, an error occurred!
-                
-            } else {
-                // Metadata contains file metadata such as size, content-type, and download URL.
-                let downloadURL = metadata!.downloadURL
-                print(downloadURL)
-                print("does it work")
-                
+        if let foodImage = FoodImageView.image?.resizeImage(CGSize(width: 500.0, height: 500.0)) {
+            let imageData: NSData = UIImagePNGRepresentation(foodImage)!
+            
+            // Create a reference to the file you want to upload
+            
+            let riversRef = storageRef.child("images/\(key)")
+            
+            // Upload the file to the path ""images/\(key)"
+            riversRef.putData(imageData, metadata: nil) { metadata, error in
+                if (error != nil) {
+                    // Uh-oh, an error occurred!
+                    
+                } else {
+                    // Metadata contains file metadata such as size, content-type, and download URL.
+                    let downloadURL = metadata!.downloadURL
+                    print(downloadURL)
+                    print("does it work")
+                    
+                }
             }
         }
         
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
- 
-    
-    func ResizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
-        let size = image.size
-        
-        let widthRatio  = targetSize.width  / image.size.width
-        let heightRatio = targetSize.height / image.size.height
-        
-        // Figure out what our orientation is, and use that to form the rectangle
-        var newSize: CGSize
-        if(widthRatio > heightRatio) {
-            newSize = CGSizeMake(size.width * heightRatio, size.height * heightRatio)
-        } else {
-            newSize = CGSizeMake(size.width * widthRatio,  size.height * widthRatio)
-        }
-        
-        // This is the rect that we've calculated out and this is what is actually used below
-        let rect = CGRectMake(0, 0, newSize.width, newSize.height)
-        
-        // Actually do the resizing to the rect using the ImageContext stuff
-        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
-        image.drawInRect(rect)
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        return newImage
-    }
-    
-    //******************************************************************************************************
+     //******************************************************************************************************
     
     
     @IBOutlet weak var foodDesTextField: UITextField!

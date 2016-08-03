@@ -11,6 +11,9 @@
 		04300D301D51A98D00716D7A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04300D2C1D51A98D00716D7A /* GoogleService-Info.plist */; };
 		04300D311D51A98D00716D7A /* HealthyLife-40181a67534f.json in Resources */ = {isa = PBXBuildFile; fileRef = 04300D2D1D51A98D00716D7A /* HealthyLife-40181a67534f.json */; };
 		04300D321D51A98D00716D7A /* FirebaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04300D2F1D51A98D00716D7A /* FirebaseClient.swift */; };
+		04300D361D51ADBF00716D7A /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04300D341D51ADBF00716D7A /* UIImageExtension.swift */; };
+		04300D371D51ADBF00716D7A /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04300D351D51ADBF00716D7A /* UIImageViewExtension.swift */; };
+		04300D3A1D51ADFE00716D7A /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04300D391D51ADFE00716D7A /* CacheService.swift */; };
 		3FEE3F4FA3D69AF73B170521 /* Pods_HealthyLife.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27ED28D4D03289767984B938 /* Pods_HealthyLife.framework */; };
 		84181DE21D47C99800686BAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84181DE11D47C99800686BAB /* AppDelegate.swift */; };
 		84181DE71D47C99800686BAB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84181DE51D47C99800686BAB /* Main.storyboard */; };
@@ -62,6 +65,9 @@
 		04300D2C1D51A98D00716D7A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		04300D2D1D51A98D00716D7A /* HealthyLife-40181a67534f.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "HealthyLife-40181a67534f.json"; sourceTree = "<group>"; };
 		04300D2F1D51A98D00716D7A /* FirebaseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseClient.swift; sourceTree = "<group>"; };
+		04300D341D51ADBF00716D7A /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		04300D351D51ADBF00716D7A /* UIImageViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
+		04300D391D51ADFE00716D7A /* CacheService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
 		27ED28D4D03289767984B938 /* Pods_HealthyLife.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HealthyLife.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A91B12079A8F4C1D8E52CAC /* Pods-HealthyLife.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HealthyLife.release.xcconfig"; path = "Pods/Target Support Files/Pods-HealthyLife/Pods-HealthyLife.release.xcconfig"; sourceTree = "<group>"; };
 		8139B3732A6950CCA938866A /* Pods-HealthyLife.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HealthyLife.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HealthyLife/Pods-HealthyLife.debug.xcconfig"; sourceTree = "<group>"; };
@@ -165,6 +171,23 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
+		04300D331D51ADBF00716D7A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				04300D341D51ADBF00716D7A /* UIImageExtension.swift */,
+				04300D351D51ADBF00716D7A /* UIImageViewExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		04300D381D51ADFE00716D7A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				04300D391D51ADFE00716D7A /* CacheService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		293FBAE7311AD53C884F0F93 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,8 +223,10 @@
 		84181DE01D47C99800686BAB /* HealthyLife */ = {
 			isa = PBXGroup;
 			children = (
-				04300D2A1D51A98D00716D7A /* Engine */,
 				04300D2E1D51A98D00716D7A /* Manager */,
+				04300D2A1D51A98D00716D7A /* Engine */,
+				04300D331D51ADBF00716D7A /* Extensions */,
+				04300D381D51ADFE00716D7A /* Services */,
 				84937EE31D5089BF00E9CBC0 /* setting */,
 				84FACCAB1D4F3D5200E73FDC /* newFeed */,
 				8482256D1D4E412F00750118 /* demo */,
@@ -536,12 +561,15 @@
 				84FACCA41D4F022200E73FDC /* DetailViewController.swift in Sources */,
 				84FACCA81D4F048A00E73FDC /* DailyPlan.swift in Sources */,
 				84FACCAD1D4F3D6A00E73FDC /* NewfeedViewController.swift in Sources */,
+				04300D3A1D51ADFE00716D7A /* CacheService.swift in Sources */,
 				84AB52821D488A6000CB99FE /* FoodTableViewCell.swift in Sources */,
 				04300D321D51A98D00716D7A /* FirebaseClient.swift in Sources */,
 				84AB52801D48881F00CB99FE /* foodModel.swift in Sources */,
 				848225711D4E42CB00750118 /* demoLibViewController.swift in Sources */,
 				84FACC9B1D4EF86700E73FDC /* Data.swift in Sources */,
+				04300D361D51ADBF00716D7A /* UIImageExtension.swift in Sources */,
 				8482256F1D4E414500750118 /* demoModel.swift in Sources */,
+				04300D371D51ADBF00716D7A /* UIImageViewExtension.swift in Sources */,
 				84937EE21D5081EC00E9CBC0 /* SettingViewController.swift in Sources */,
 				84181E131D47CAC500686BAB /* SignInViewController.swift in Sources */,
 				848225731D4E430D00750118 /* demoTableViewCell.swift in Sources */,
