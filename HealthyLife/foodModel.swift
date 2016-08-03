@@ -15,7 +15,7 @@ class Food {
     private var FoodKey: String!
     private var FoodDes: String!
     private var Love: Int!
-    private var Time: NSDate!
+    private var Time = NSDate()
     
     
     var foodKey: String {
