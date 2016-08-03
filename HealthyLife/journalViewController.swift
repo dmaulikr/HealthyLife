@@ -53,6 +53,7 @@ class journalViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         if checkID == true {
             currentUserID = (FIRAuth.auth()?.currentUser?.uid)!
+            defaults.setValue(currentUserID, forKey: "currentID")
             
             
         } else {
@@ -80,23 +81,9 @@ class journalViewController: UIViewController, UITableViewDelegate, UITableViewD
         })
         
         let islandRef = storageRef.child("images/\(currentUserID)")
-        // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
-        islandRef.dataWithMaxSize((1 * 1024 * 1024)/2) { (data, error) -> Void in
-            if (error != nil) {
-                // Uh-oh, an error occurred!
-            } else {
-                // Data for "images/island.jpg" is returned
-                print("it workss")
-                let AvaImage: UIImage! = UIImage(data: data!)
-                self.avaImage.image = AvaImage
-                
-                self.avaImage.layer.cornerRadius = 20
-                self.avaImage.clipsToBounds = true
-                
-                
-            }
-        }
-
+        avaImage.downloadImageWithImageReference(islandRef)
+        avaImage.layer.cornerRadius = 20
+        avaImage.clipsToBounds = true
         
         
         //MARK: Set Up table data

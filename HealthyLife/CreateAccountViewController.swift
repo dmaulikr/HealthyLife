@@ -12,6 +12,7 @@ import Firebase
 class CreateAccountViewController: UIViewController {
     
     var ref =  FIRDatabase.database().reference()
+    let defaults = NSUserDefaults.standardUserDefaults()
     
     
     @IBOutlet weak var emailTextField: UITextField!
@@ -28,15 +29,15 @@ class CreateAccountViewController: UIViewController {
         if let email = emailTextField.text, let password = passwordTextField.text, let username = usernameTextfield.text {
             FIRAuth.auth()?.createUserWithEmail(email, password: password, completion: { (user, error) in
                 if error != nil {
-                    print(error?.localizedDescription)
-                    self.alertMessage("Error", message: "\(error!.localizedDescription)")
+                    print(error?.debugDescription)
+                    Helper.showAlert("Error", message: error?.localizedDescription, inViewController: self)
                 } else {
                     FIRAuth.auth()?.signInWithEmail(email, password: password, completion: { (user, error) in
                         if error != nil {
                             
                         } else {
                             self.ref.child("users").child(user!.uid).child("username").setValue(username)
-
+                            self.defaults.setBool(true, forKey: "checkID")
                             self.performSegueWithIdentifier("2", sender: self)
                         }
                     })
@@ -44,7 +45,7 @@ class CreateAccountViewController: UIViewController {
                 
             })
         } else {
-            alertMessage("Oops", message: "Please fill in all the fields")
+            Helper.showAlert("Oops", message: "Please fill in all the fields", inViewController: self)
         }
     }
     
@@ -53,14 +54,6 @@ class CreateAccountViewController: UIViewController {
     }
     @IBAction func cancelButton(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    func alertMessage (title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        let OK = UIAlertAction(title: "ok", style: .Default, handler: nil)
-        alert.addAction(OK)
-        presentViewController(alert, animated: true, completion: nil)
-        
     }
     
     override func viewDidLoad() {
