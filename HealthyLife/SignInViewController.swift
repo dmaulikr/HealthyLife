@@ -11,6 +11,8 @@ import Firebase
 
 
 class SignInViewController: UIViewController {
+    
+    let defaults = NSUserDefaults.standardUserDefaults()
 
     @IBOutlet weak var emailTextField: UITextField!
     
@@ -29,6 +31,7 @@ class SignInViewController: UIViewController {
                 } else {
                     print(user)
                     print("User logged in")
+                     self.defaults.setBool(true, forKey: "checkID")
                     self.performSegueWithIdentifier("1", sender: self)
                 }
             })
@@ -56,7 +59,6 @@ class SignInViewController: UIViewController {
         if let user = FIRAuth.auth()?.currentUser {
             // User is signed in.
             
-            let defaults = NSUserDefaults.standardUserDefaults()
             
             defaults.setBool(true, forKey: "checkID")
             

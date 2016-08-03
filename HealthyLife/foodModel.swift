@@ -59,7 +59,7 @@ class Food {
         
         // The above properties are assigned to their key.
         
-        self.FoodRef = FIRDatabase.database().reference().child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("food_journal").child(self.FoodKey)
+        self.FoodRef = FIRDatabase.database().reference().child("users").child((NSUserDefaults.standardUserDefaults().valueForKey("currentID")) as! String).child("food_journal").child(self.FoodKey)
     }
     
     func addSubtractLove(addVote: Bool) {

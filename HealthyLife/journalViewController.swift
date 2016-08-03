@@ -53,6 +53,7 @@ class journalViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         if checkID == true {
             currentUserID = (FIRAuth.auth()?.currentUser?.uid)!
+            defaults.setValue(currentUserID, forKey: "currentID")
             
             
         } else {

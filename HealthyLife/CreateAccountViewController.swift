@@ -12,6 +12,7 @@ import Firebase
 class CreateAccountViewController: UIViewController {
     
     var ref =  FIRDatabase.database().reference()
+    let defaylts = NSUserDefaults.standardUserDefaults()
     
     
     @IBOutlet weak var emailTextField: UITextField!
@@ -36,7 +37,7 @@ class CreateAccountViewController: UIViewController {
                             
                         } else {
                             self.ref.child("users").child(user!.uid).child("username").setValue(username)
-
+                            self.defaults.setBool(true, forKey: "checkID")
                             self.performSegueWithIdentifier("2", sender: self)
                         }
                     })
