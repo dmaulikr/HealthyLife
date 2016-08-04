@@ -26,6 +26,7 @@
 		84181E051D47C99800686BAB /* HealthyLifeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84181E041D47C99800686BAB /* HealthyLifeUITests.swift */; };
 		84181E131D47CAC500686BAB /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84181E121D47CAC500686BAB /* SignInViewController.swift */; };
 		84181E151D47CAD800686BAB /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84181E141D47CAD800686BAB /* CreateAccountViewController.swift */; };
+		8474E35F1D53571F0098694D /* mainTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8474E35E1D53571F0098694D /* mainTabbarViewController.swift */; };
 		8482256F1D4E414500750118 /* demoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8482256E1D4E414500750118 /* demoModel.swift */; };
 		848225711D4E42CB00750118 /* demoLibViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848225701D4E42CB00750118 /* demoLibViewController.swift */; };
 		848225731D4E430D00750118 /* demoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848225721D4E430D00750118 /* demoTableViewCell.swift */; };
@@ -89,6 +90,7 @@
 		84181E061D47C99800686BAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84181E121D47CAC500686BAB /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		84181E141D47CAD800686BAB /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
+		8474E35E1D53571F0098694D /* mainTabbarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mainTabbarViewController.swift; sourceTree = "<group>"; };
 		8482256E1D4E414500750118 /* demoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = demoModel.swift; sourceTree = "<group>"; };
 		848225701D4E42CB00750118 /* demoLibViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = demoLibViewController.swift; sourceTree = "<group>"; };
 		848225721D4E430D00750118 /* demoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = demoTableViewCell.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 				84181DE51D47C99800686BAB /* Main.storyboard */,
 				84181DED1D47C99800686BAB /* LaunchScreen.storyboard */,
 				84181DF01D47C99800686BAB /* Info.plist */,
+				8474E35E1D53571F0098694D /* mainTabbarViewController.swift */,
 			);
 			path = HealthyLife;
 			sourceTree = "<group>";
@@ -582,6 +585,7 @@
 				84AB52801D48881F00CB99FE /* foodModel.swift in Sources */,
 				848225711D4E42CB00750118 /* demoLibViewController.swift in Sources */,
 				84FACC9B1D4EF86700E73FDC /* Data.swift in Sources */,
+				8474E35F1D53571F0098694D /* mainTabbarViewController.swift in Sources */,
 				04300D361D51ADBF00716D7A /* UIImageExtension.swift in Sources */,
 				8482256F1D4E414500750118 /* demoModel.swift in Sources */,
 				04300D371D51ADBF00716D7A /* UIImageViewExtension.swift in Sources */,
